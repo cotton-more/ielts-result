@@ -5,7 +5,7 @@ module.exports = (grunt) ->
   # Project configuration.
   grunt.initConfig(
     nodeunit:
-      files: ['test/**/*_test.js']
+      files: ['test/**/*_test.coffee']
 
     jshint:
       options:

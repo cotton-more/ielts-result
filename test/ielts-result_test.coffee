@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-var ielts_result = require('../lib/ielts-result.js');
+ielts_result = require '../lib/ielts-result.js'
 
-/*
+###
   ======== A Handy Little Nodeunit Reference ========
   https://github.com/caolan/nodeunit
 
@@ -20,17 +20,14 @@ var ielts_result = require('../lib/ielts-result.js');
     test.throws(block, [error], [message])
     test.doesNotThrow(block, [error], [message])
     test.ifError(value)
-*/
+###
 
-exports['awesome'] = {
-  setUp: function(done) {
-    // setup here
-    done();
-  },
-  'no args': function(test) {
-    test.expect(1);
-    // tests here
-    test.equal(ielts_result.awesome(), 'awesome', 'should be awesome.');
-    test.done();
-  },
-};
+exports['awesome'] =
+    setUp: (done) ->
+        # setup here
+        done()
+    'no args': (test) ->
+        test.expect 1
+        # tests here
+        test.equal ielts_result.awesome(), 'awesome', 'should be awesome.'
+        test.done()
