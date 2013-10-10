@@ -4,9 +4,6 @@ module.exports = (grunt) ->
 
     # Project configuration.
     grunt.initConfig(
-        nodeunit:
-            files: ['test/**/*_test.coffee']
-
         coffee:
             options: { bare: true }
             compile:
@@ -20,9 +17,6 @@ module.exports = (grunt) ->
             src:
                 files: 'src/**/*.coffee'
                 tasks: [ 'coffee' ]
-            test:
-                files: '<%= nodeunit.files %>'
-                tasks: [ 'nodeunit' ]
     )
 
     # These plugins provide necessary tasks.
@@ -32,6 +26,5 @@ module.exports = (grunt) ->
 
     # Default task.
     grunt.registerTask 'default', [
-        'nodeunit'
         'watch'
     ]

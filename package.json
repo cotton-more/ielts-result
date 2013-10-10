@@ -25,10 +25,8 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt nodeunit"
   },
   "devDependencies": {
-    "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.1",
     "grunt-contrib-coffee": "~0.7.0"
