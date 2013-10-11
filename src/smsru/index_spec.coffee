@@ -1,5 +1,6 @@
 assert = require 'assert'
 path = require 'path'
+querystring = require 'querystring'
 
 Smsru = require './index'
 
@@ -17,7 +18,7 @@ describe 'smsru', ->
             @timeout 5000
             smsru.test true
 
-            smsru.send 'test', 'UNKNOWN', (res) ->
+            smsru.send 'text', (res) ->
                 res.setEncoding 'utf8'
 
                 data = ''
@@ -26,5 +27,5 @@ describe 'smsru', ->
 
                 res.on 'end', ->
                     data = data.split "\n"
-                    assert.equal data[0], '202'
+                    assert.equal data[0], '100'
                     done()

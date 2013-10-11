@@ -23,6 +23,7 @@ class Smsru
             path: path + '?' + querystring.stringify data
 
         options.path += '&text=' + text
+
         options.path += '&to=' + (to[0] || data.to)
 
         req = http.request options, cb

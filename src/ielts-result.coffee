@@ -10,8 +10,10 @@ Licensed under the MIT license.
 process.abort() if process.argv.length < 4
 
 Get = require './get'
+Smsru = require './smsru'
 
 get = new Get process.argv[2]
+smsru = new Smsru process.argv[3]
 
 get.fetchResult (res) ->
     res.setEncoding 'utf8'
@@ -22,3 +24,4 @@ get.fetchResult (res) ->
 
     res.on 'end', ->
         console.log data
+        smsru.send data
