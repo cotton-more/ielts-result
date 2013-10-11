@@ -15,13 +15,22 @@ Smsru = require './smsru'
 get = new Get process.argv[2]
 smsru = new Smsru process.argv[3]
 
-get.fetchResult (res) ->
-    res.setEncoding 'utf8'
+main = ->
+    get.fetchResult (res) ->
+        res.setEncoding 'utf8'
 
-    data = ''
-    res.on 'data', (d) ->
-        data += d
+        data = ''
+        res.on 'data', (d) ->
+            data += d
 
-    res.on 'end', ->
-        console.log data
-        smsru.send data
+        res.on 'end', ->
+            if ~data.indexOf('color:red') is 0
+                setTimeout ->
+                    main()
+                , 1000
+            else
+                smsru.send 'data', ->
+                    process.abort()
+
+
+main()
