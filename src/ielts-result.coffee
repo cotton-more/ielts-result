@@ -7,9 +7,11 @@ Licensed under the MIT license.
 ###
 'use strict'
 
-Get = require './get/get'
+process.abort() if process.argv.length < 4
 
-get = new Get 'test/exam.json'
+Get = require './get'
+
+get = new Get process.argv[2]
 
 get.fetchResult (res) ->
     res.setEncoding 'utf8'
