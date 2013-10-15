@@ -1,8 +1,7 @@
 'use strict'
 
 path = require 'path'
-http = require 'http'
-querystring = require 'querystring'
+request = require 'request'
 
 class Get
     data = {}
@@ -10,12 +9,9 @@ class Get
         data = require path.resolve filename
 
     fetchResult: (cb = ->) ->
-        options =
-            host: 'ielts-moscow.ru'
-            path: '/ajax/get_results.php?' + querystring.stringify data
-
-        req = http.request options, cb
-
-        req.end()
+        request {
+            url: 'http://ielts-moscow.ru/ajax/get_results.php'
+            qs: data
+        }, cb
 
 exports = module.exports = Get

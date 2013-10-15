@@ -1,9 +1,8 @@
-http = require 'http'
-querystring = require 'querystring'
+request = require 'request'
 
 class Smsru
     data = {}
-    host = 'sms.ru'
+    host = 'http://sms.ru'
     path = '/sms/send'
 
     constructor: (filename) ->
@@ -18,16 +17,16 @@ class Smsru
             data.test = +(!!value)
 
     send: (text, to..., cb = ->) ->
-        options =
-            host: host
-            path: path + '?' + querystring.stringify data
+        qs =
+            'api_id': data.api_id
+            'test': @test()
 
-        options.path += '&text=' + text
+        qs.text = text
+        qs.to = (to[0] || data.to)
 
-        options.path += '&to=' + (to[0] || data.to)
-
-        req = http.request options, cb
-
-        req.end()
+        request {
+            uri: host + path
+            qs: qs
+        }, cb
 
 module.exports = exports = Smsru

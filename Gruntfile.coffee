@@ -16,7 +16,7 @@ module.exports = (grunt) ->
         watch:
             src:
                 files: 'src/**/*.coffee'
-                tasks: [ 'mochaTest', 'coffee' ]
+                tasks: [ 'coffee' ]
 
         mochaTest:
             test:
@@ -33,5 +33,7 @@ module.exports = (grunt) ->
 
     # Default task.
     grunt.registerTask 'default', [
+        # 'mochaTest'
+        'coffee'
         'watch'
     ]
