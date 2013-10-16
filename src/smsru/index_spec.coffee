@@ -18,14 +18,7 @@ describe 'smsru', ->
             @timeout 5000
             smsru.test true
 
-            smsru.send 'text', (res) ->
-                res.setEncoding 'utf8'
-
-                data = ''
-                res.on 'data', (d) ->
-                    data += d
-
-                res.on 'end', ->
-                    data = data.split "\n"
-                    assert.equal data[0], '100'
-                    done()
+            smsru.send 'text', (error, response, body) ->
+                data = body.split "\n"
+                assert.equal data[0], '100'
+                done()

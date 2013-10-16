@@ -32,7 +32,7 @@ module.exports = (grunt) ->
 
     # Default task.
     grunt.registerTask 'default', [
-        # 'mochaTest'
         'coffee'
+        'mochaTest'
         'watch'
     ]
