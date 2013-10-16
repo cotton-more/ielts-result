@@ -9,14 +9,19 @@ Licensed under the MIT license.
 
 process.abort() if process.argv.length < 4
 
-Get = require './get'
 Smsru = require './smsru'
+path = require 'path'
+request = require 'request'
 
-get = new Get process.argv[2]
 smsru = new Smsru process.argv[3]
 
+data = require( path.resolve( process.argv[2] ) )
+
 main = ->
-    get.fetchResult (error, response, body) ->
+    request {
+        url: 'http://ielts-moscow.ru/ajax/get_results.php'
+        qs: data
+    }, (error, response, body) ->
         if ~body.indexOf('color:red') is 0
             smsru.send response.request.href, ->
                 process.abort()
@@ -24,6 +29,6 @@ main = ->
             setTimeout ->
                 console.log body
                 main()
-            , 1000
+            , 2000
 
 main()
