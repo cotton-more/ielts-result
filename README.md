@@ -6,10 +6,10 @@ Check result for IELTS exam
 Install the module with: `npm install ielts-result`
 
 ## Documentation
-_(Coming soon)_
+First argument is an ielst configuration data (date, name and so on). Second argument is a configuration for sms.ru (api_id)
 
 ## Examples
-_(Coming soon)_
+```node lib/ielts-result.js ~/ielts.json ~/.smsru.json```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
