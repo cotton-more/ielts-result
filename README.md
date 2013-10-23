@@ -9,7 +9,7 @@ Install the module with: `npm i https://github.com/vansanblch/ielts-result/tarba
 First argument is an ielst configuration data (date, name and so on). Second argument is a configuration for sms.ru (api_id)
 
 ## Examples
-```javascript
+```
 node node_modules/ielts-result ~/ielts.json ~/smsru.json
 ```
 
