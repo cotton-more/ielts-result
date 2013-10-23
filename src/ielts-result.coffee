@@ -1,3 +1,4 @@
+### jshint node: true ###
 ###
 ielts-result
 https://github.com/vansanblch/ielts-result
@@ -5,7 +6,7 @@ https://github.com/vansanblch/ielts-result
 Copyright (c) 2013 Ivan Nikulin
 Licensed under the MIT license.
 ###
-'use strict'
+"use strict"
 
 process.abort() if process.argv.length < 4
 
