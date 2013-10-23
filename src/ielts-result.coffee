@@ -9,12 +9,14 @@ Licensed under the MIT license.
 
 process.abort() if process.argv.length < 4
 
-Smsru = require './smsru'
+Smsru = require 'smsru'
 path = require 'path'
 request = require 'request'
 
+# create smsru service instance
 smsru = new Smsru process.argv[3]
 
+# get data for request
 data = require( path.resolve( process.argv[2] ) )
 
 main = ->
