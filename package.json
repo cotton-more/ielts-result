@@ -20,20 +20,19 @@
       "url": "https://github.com/vansanblch/ielts-result/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "lib/ielts-result",
+  "main": "lib/index",
   "engines": {
     "node": ">= 0.8.0"
   },
   "scripts": {},
   "devDependencies": {
-    "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.1",
-    "grunt-contrib-coffee": "~0.7.0",
-    "grunt-mocha-test": "~0.7.0",
-    "request": "~2.27.0"
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-coffee": "~0.7.0"
   },
   "keywords": [],
   "dependencies": {
-    "request": "~2.27.0"
+    "request": "~2.27.0",
+    "smsru": "https://github.com/vansanblch/smsru/tarball/v0.1.0"
   }
 }

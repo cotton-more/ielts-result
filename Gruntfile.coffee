@@ -7,32 +7,21 @@ module.exports = (grunt) ->
         coffee:
             options: { bare: true }
             compile:
-                expand: true
-                cwd: 'src'
-                src: ['**/*.coffee', '!**/*_spec.coffee']
-                dest: 'lib'
-                ext: '.js'
+                files:
+                    'lib/index.js': 'src/ielts-result.coffee'
 
         watch:
             src:
                 files: 'src/**/*.coffee'
-                tasks: [ 'coffee', 'mochaTest' ]
-
-        mochaTest:
-            test:
-                options:
-                    reporter: 'spec'
-                src: [ 'src/**/*_spec.coffee' ]
+                tasks: [ 'coffee' ]
     )
 
     # These plugins provide necessary tasks.
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-watch'
-    grunt.loadNpmTasks 'grunt-mocha-test'
 
     # Default task.
     grunt.registerTask 'default', [
         'coffee'
-        'mochaTest'
         'watch'
     ]
