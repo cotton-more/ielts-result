@@ -8,17 +8,24 @@ Licensed under the MIT license.
 ###
 "use strict"
 
-process.abort() if process.argv.length < 4
+argv = require('optimist')
+    .usage('Get ielts exam result.\nUsage: $0')
+    .describe({
+        smsru: 'Path to smsru config'
+        ielts: 'Path to exam data'
+    })
+    .demand([ 'smsru', 'ielts' ])
+    .argv
 
 Smsru = require 'smsru'
 path = require 'path'
 request = require 'request'
 
 # create smsru service instance
-smsru = new Smsru process.argv[3]
+smsru = new Smsru argv.smsru
 
 # get data for request
-data = require( path.resolve( process.argv[2] ) )
+data = require argv.ielts
 
 main = ->
     request {
@@ -30,7 +37,6 @@ main = ->
                 process.abort()
         else
             setTimeout ->
-                console.log body
                 main()
             , 2000
 
