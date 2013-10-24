@@ -32,6 +32,7 @@ main = ->
         url: 'http://ielts-moscow.ru/ajax/get_results.php'
         qs: data
     }, (error, response, body) ->
+        console.info body
         if ~body.indexOf('color:red') is 0
             smsru.send response.request.href, ->
                 process.abort()
