@@ -17,6 +17,8 @@ argv = require('optimist')
     .demand([ 'smsru', 'ielts' ])
     .argv
 
+log = require 'npmlog'
+
 Smsru = require 'smsru'
 path = require 'path'
 request = require 'request'
@@ -32,10 +34,14 @@ main = ->
         url: 'http://ielts-moscow.ru/ajax/get_results.php'
         qs: data
     }, (error, response, body) ->
-        console.info body
+        log.info 'ielts', body
         if ~body.indexOf('color:red') is 0
-            smsru.send response.request.href, ->
-                process.abort()
+            smsru.send response.request.href, (error, body) ->
+                if error
+                    log.error 'smsru', error
+                else
+                    log.info 'smsru', response.request.href
+                    log.info 'smsru', body
         else
             setTimeout ->
                 main()

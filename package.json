@@ -34,6 +34,7 @@
   "dependencies": {
     "request": "~2.27.0",
     "smsru": "https://github.com/vansanblch/smsru/tarball/v0.1.0",
-    "optimist": "~0.6.0"
+    "optimist": "~0.6.0",
+    "npmlog": "0.0.4"
   }
 }
